@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
@@ -38,6 +41,26 @@ public class TestBaseClass extends AbstractTestNGCucumberTests{
 			driver = new FirefoxDriver();
 		}
 
+		//headless browser 
+		
+		
+		else if(browsername.equalsIgnoreCase("headless"))
+
+		{
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setJavascriptEnabled(true);
+            caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+            		System.getProperty("user.dir") + "/drivers/phantomjs.exe");
+            String [] phantomJsArgs = {"--websecurity=no", "ignore-ssl-errors=yes"};
+            caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,phantomJsArgs);       
+			driver = new PhantomJSDriver(caps);
+		}
+		
+		
+		
+		
+		
+		
 		else if(browsername.equalsIgnoreCase("Edge"))
 
 		{
