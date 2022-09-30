@@ -23,7 +23,7 @@ public class UserRegisterationTestCase extends TestBaseClass {
 		homeObject.OpenRegisterationPage();
 
 		ObjectRegesteration = new  UserRegisterationPage(driver);
-		ObjectRegesteration.userRegisteration("shimaa", "Elsayed", "rtbvgs@gmail.com", "127750");
+		ObjectRegesteration.userRegisteration("shimaa", "Elsayed", "modgbv@gmail.com", "127750");
 		Assert.assertTrue(ObjectRegesteration.sucessmassege.getText().contains("Your registration completed"));
 	}
 	@Test(dependsOnMethods = "userregesterationsucessfully")
