@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -57,7 +58,17 @@ public class TestBaseClass extends AbstractTestNGCucumberTests{
 		}
 		
 		
-		
+		else if(browsername.equalsIgnoreCase("chrome-headless"))
+
+		{
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/drivers/chromedriver.exe") ;
+
+			ChromeOptions Options = new ChromeOptions ();
+             Options.addArguments("--headless") ;
+             Options.addArguments("--window-size=1920,1080") ;
+             
+			driver = new ChromeDriver(Options);
+		}
 		
 		
 		
